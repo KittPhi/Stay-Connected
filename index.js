@@ -36,8 +36,7 @@ server.listen(port, function() {
 });
 
 app.post('/formSubmit', function(request, response) {
-    console.log(request.body.user.name);
-    console.log(request.body.user.email);
+    console.log(request.body.movie.name);
     response.send("Success");
 })
 
