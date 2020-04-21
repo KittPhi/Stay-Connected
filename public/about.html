@@ -41,18 +41,162 @@
       </nav>
     </header>
 
+    <article>
+      <img class="resize" src="images/movierecommender.jpg">
+    </article>
+
     <div class="center">
       <div class="title">Movie Recommendation Game</div>
       <br>
-      <p class="inner">Rate these films 1 - 10</p>
-      <div>
+      <p class="inner">Rate these films 1 - 5</p>
+      <!-- <div>
         <div>
           <img class="img" src="images/forrestGump.jpg" alt="forrestGump" width="200" height="200">
           <input type="text" value="enter rating"><br>
         </div>
+      </div> -->
+
+      <!-- <div>
+        <button onclick="getElementById('date').innerHTML = Date()">get date</button>
+        <p id=date></p>
+      </div> -->
+      <div class="row">
+        <div class="gallery">
+          <a>
+            <img class="thumb" src="images/forrestGump.jpg" alt="Cinque Terre" width="600" height="400">
+          </a>
+          <div class="desc">Forrest Gump</div>
+          <input class="rating" type="number" id="forrestGump" value="0">
+        </div>
+        
+        <div class="gallery">
+          <a>
+            <img class="thumb" src="images/shawshank.jpg" alt="shawshank" width="600" height="400">
+          </a>
+          <div class="desc">Shawshank Redemption</div>
+          <input class="rating" type="number" id="ratedShaw" value="0">
+        </div>
+        
+        <div class="gallery">
+          <a>
+            <img class="thumb" src="images/pulpFiction.jpg" alt="Northern Lights" width="600" height="400">
+          </a>
+          <div class="desc">Pulp Fiction</div>
+          <input class="rating" type="number" id="pulpFiction" value="0">
+        </div>
+        
+        <div class="gallery">
+          <a>
+            <img class="thumb" src="images/silenceOftheLambs.jpg" alt="Mountains" width="600" height="400">
+          </a>
+          <div class="desc">The Silence of the Lambs</div>
+          <input class="rating" type="number" id="silenceLambs" value="0">
+        </div>
+  
+        <div class="gallery">
+          <a>
+            <img class="thumb" src="images/theMatrix.jpg" alt="Mountains" width="600" height="400">
+          </a>
+          <div class="desc">The Matrix</div>
+          <input class="rating" type="number" id="theMatrix" value="0">
+        </div>
       </div>
-      <button>Submit Ratings</button>
-      <br>
+      
+      <div class="row">
+        <div class="gallery">
+          <a>
+            <img class="thumb" src="images/starWars.jpg" alt="Mountains" width="600" height="400">
+          </a>
+          <div class="desc">Star Wars IV: A New Hope</div>
+          <input class="rating" type="number" id="starWars" value="0">
+        </div>
+  
+        <div class="gallery">
+          <a>
+            <img class="thumb" src="images/jurassicPark.jpg" alt="Mountains" width="600" height="400">
+          </a>
+          <div class="desc">Jurassic Park</div>
+          <input class="rating" type="number" id="jurassicPark" value="0">
+        </div>
+  
+        <div class="gallery">
+          <a>
+            <img class="thumb" src="images/braveheart.jpg" alt="Mountains" width="600" height="400">
+          </a>
+          <div class="desc">Braveheart</div>
+          <input class="rating" type="number" id="braveHeart" value="0">
+        </div>
+  
+        <div class="gallery">
+          <a>
+            <img class="thumb" src="images/terminator2.jpg" alt="Mountains" width="600" height="400">
+          </a>
+          <div class="desc">Terminator 2: Judgement Day</div>
+          <input class="rating" type="number" id="terminator" value="0">
+        </div>
+  
+        <div class="gallery">
+          <a>
+            <img class="thumb" src="images/schindlersList.jpg" alt="Mountains" width="600" height="400">
+          </a>
+          <div class="desc">Schindler's List</div>
+          <input class="rating" type="number" id="schindlersList" value="0">
+        </div>
+      </div>
+      
+      <button onclick="submitRating()">Submit Rating</button>
+
+      <p id="result"></p>
+
+      <script>
+        function submitRating() {
+            var ratedSL = document.getElementById("schindlersList").value;
+            if (ratedSL < 0 || ratedSL > 5) {
+              document.getElementById("result").innerHTML = "Please Enter 0 - 5";
+            }
+            else {
+              document.getElementById("result").innerHTML = "Your Ratings are submitted, Let me recommend a movie";
+            }
+            var ratedTerm = document.getElementById("terminator").value;
+            if (ratedTerm < 0 || ratedTerm > 5) {
+              document.getElementById("result").innerHTML = "Please Enter 0 - 5";
+            }
+            var ratedBrave = document.getElementById("braveHeart").value;
+            if (ratedBrave < 0 || ratedBrave > 5) {
+              document.getElementById("result").innerHTML = "Please Enter 0 - 5";
+            }
+            var ratedPark = document.getElementById("jurassicPark").value;
+            if (ratedPark < 0 || ratedPark > 5) {
+              document.getElementById("result").innerHTML = "Please Enter 0 - 5";
+            }
+            var ratedSW = document.getElementById("starWars").value;
+            if (ratedSW < 0 || ratedSW > 5) {
+              document.getElementById("result").innerHTML = "Please Enter 0 - 5";
+            }
+            var ratedMatrix = document.getElementById("theMatrix").value;
+            if (ratedMatrix < 0 || ratedMatrix > 5) {
+              document.getElementById("result").innerHTML = "Please Enter 0 - 5";
+            }
+            var ratedLambs = document.getElementById("silenceLambs").value;
+            if (ratedLambs < 0 || ratedLambs > 5) {
+              document.getElementById("result").innerHTML = "Please Enter 0 - 5";
+            }
+            var ratedPulp = document.getElementById("pulpFiction").value;
+            if (ratedPulp < 0 || ratedPulp > 5) {
+              document.getElementById("result").innerHTML = "Please Enter 0 - 5";
+            }
+            var ratedShaw = document.getElementById("ratedShaw").value;
+            if (ratedShaw < 0 || ratedShaw > 5) {
+              document.getElementById("result").innerHTML = "Please Enter 0 - 5";
+            }
+            var ratedGump = document.getElementById("forrestGump").value;
+            if (ratedGump < 0 || ratedGump > 5) {
+              document.getElementById("result").innerHTML = "Please Enter 0 - 5";
+            }
+        }
+      </script>
+
+      <!-- <br>
       <br>
       <p class="inner">Now enter your top 3 favorite movies</p>
       <div class="list">
@@ -61,11 +205,9 @@
         <input type="text" value="enter 3rd favorite movie"><br>
       </div>
       <button>Submit Favorites</button>
-    </div>
+    </div> -->
 
-    <article>
-      <img class="resize" src="images/movierecommender.jpg">
-    </article>
+    
 
     <footer id="colophon" class="site-footer" role="contentinfo">
       <div class="social-wrapper">
