@@ -1,0 +1,251 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+/* image gallery */
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+img.thumb {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+/* Create five equal columns that floats next to each other */
+.gallery {
+  float: left;
+  width: 20%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* movie game ---------------------------------*/
+/* .img { border-radius: 8px; vertical-align: middle; background-color: black;} */
+.center { text-align: center; }
+.title { font-size: 40px; }
+.inner { font-size: 25px; }
+.list { padding: 10px; }
+input.rating { font-size: 10pt; text-align: center; }
+label, input { font-size: 16pt; text-align: center; }
+button { font-size: 16pt; text-align: center; background-color: yellow; }
+
+/*contact ####################################*/
+img.resize {
+    height: 75%;
+    width: 100%;
+  }
+/*resume ####################################*/
+h2 {
+  text-decoration: underline;
+}
+.grid-container-two {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 2px;
+    padding: 2px;
+    
+  }
+/*about me ####################################*/
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 2px;
+  padding: 2px;
+  background-color: rgb(100, 34, 75);
+}
+
+.grid-container > div {
+  background-color: gray;
+  text-align: center;
+  padding: 2px 0;
+  font-size: 15px;
+}
+
+/*Nav Bar*/
+.resize {
+  width: 25%; /* you can use % */
+  height: 25%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 8vh;
+  background-color: #5d4954;
+  font-family: "Poppins", sans-serif;
+}
+.logo {
+  color: rgb(226, 226, 226);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 20px;
+}
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+}
+.nav-links a {
+  color: rgb(226, 226, 226);
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.burger {
+  display: none;
+  cursor: pointer; /*adds cursor when hovered*/
+}
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: rgb(226, 226, 226);
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+@media screen and (max-width: 1024px) {
+  .nav-links {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden; /*removes lower scroll bar*/
+  }
+  .nav-links {
+    position: absolute;
+    right: 0px;
+    height: 92vh;
+    top: 8vh;
+    background-color: #5d4954;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    transform: translateX(100%); /*moves off screen*/
+    transition: transform 0.5s ease-in;
+  }
+  .nav-links li {
+    opacity: 1; /*original state*/
+  }
+  .burger {
+    display: block; /* over-rides display: hidden */
+  }
+}
+.nav-active {
+  transform: translateX(0%); /*when burger clicked, this goes back to Zero*/
+}
+/*helper to annimate nav-links in app.js */
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    tranform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+  opacity: 0;
+}
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/*Footer ###################################*/
+.site-footer {
+  background-color: #838383;
+  text-align: center;
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+#social-wrapper {
+  text-align: center;
+}
+
+/*Social Media Icons*/
+.social-wrapper {
+  text-align: center;
+}
+
+.social-wrapper ul li {
+  display: inline;
+  margin: 0 5px;
+}
+
+.twitter-icon,
+.facebook-icon,
+.instagram-icon,
+.linkedin-icon,
+.googleplus-icon,
+.youtube-icon,
+.foursquare-icon {
+  margin-top: 0.625em;
+  width: 40px;
+  height: 40px;
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+  border-radius: 25px;
+}
+
+.twitter-icon:hover,
+.facebook-icon:hover,
+.instagram-icon:hover,
+.linkedin-icon:hover,
+.googleplus-icon:hover,
+.youtube-icon:hover,
+.foursquare-icon:hover {
+  opacity: 1;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+.footer-nav p {
+  text-align: center;
+}
+
+/*Dark Mode*/
+
+body.dark-mode {
+  background-color: #111;
+  color: #eee;
+  a {
+    color: #111;
+  }
+  button {
+    background-color: #eee;
+    color: #111;
+  }
+}
+
+body.light-mode {
+  background-color: #eee;
+  color: #111;
+  a {
+    color: #111;
+  }
+  button {
+    background-color: #111;
+    color: #eee;
+  }
+}
