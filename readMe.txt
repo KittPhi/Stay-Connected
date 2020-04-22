@@ -24,3 +24,42 @@ npm i socket.io
 
 > node index.js
 npm i express socket.io --> was a fix for error
+=================================================
+"Run Python script on clicking HTML button | Script Output on Html Page"
+ref: https://www.youtube.com/watch?v=ERMRVORGvZM
+
+django - used to execute python script to html
+
+vsCode:
+    - open file request.py
+    - to run, click run (same as in CLI python3 request.py)
+CLI:
+    - python3 request.py
+    - cat request.py
+
+pip -v 
+pip install django
+For Linux:
+    sudo apt install python-django-common = Fix: linux
+    sudo apt-get update
+    sudo apt-get install python-django
+    django-admin startproject buttonpython
+For Windows: 
+django-admin startproject buttonpython
+-  cd buttonpython
+-  vsCode:
+    - open manage.py (this starts a Python terminal)
+python3 manage.py runserver 127.0.0.1:8002
+- ctrl click http://127.0.0.1:8002
+python3 manage.py migrate - fixes warning error
+
+set path in django https://youtu.be/s6Xi7x4G7yg?t=391
+pwd = gets path, then change / to //
+/home/kitt/Documents/Repositories/Stay-Connected
+//home//kitt//Documents//Repositories//Stay-Connected
+==================================================
+error on import django in urls.py
+FIX: You need Django version 2
+    pip install --upgrade django
+    pip3 install --upgrade django
+
