@@ -1,4 +1,5 @@
 const express = require('express');
+const { spawn } = require('child_process')
 const app = express();   // replaces const express = require('express')(); 
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
@@ -14,11 +15,31 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // app.get('/', (request, response) => response.send('Hello World!'));
-app.get('/', function(request, response) {
-    response.sendFile(__dirname + '/index.html');
+
+// express app with one get router
+app.get('/', (request, response) => {
+    console.log('inside get router')
+    // response.sendFile(__dirname + '/index.html');
+
+    var dataToSend;
+
+    // spawn new child_process
+    const python = spawn('python', ['hello.py']);  // python hello.py
+
+    python.stdout.on('data', (data) => {    // python script outputs to console, then buffer outputs data into readable string
+        console.log('Pipe data from python');
+        dataToSend = data.toString();
+    });
+    
+    python.on('close', (code) => {  // 'close' is emitted when stdio child_process has been closed
+        console.log(`close python process ${code}`);
+        response.send(dataToSend);
+    });
+
 });
 
 io.on('connection', (socket) => {
+
     console.log('socket connected');
     socket.on('chat', (message) => {
         io.emit('chat', message);
@@ -31,16 +52,16 @@ io.on('connection', (socket) => {
  
  });
  
-server.listen(port, function() {
+server.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
 
-app.post('/formSubmit', function(request, response) {
+app.post('/formSubmit', (request, response) => {
     console.log(request.body.movie.name);
     response.send("Success");
 })
 
-app.post('/car', function(request, response) {
+app.post('/car', (request, response) => {
     console.log(request.body.make);
     console.log(request.body.model);
     console.log(request.body.year);
