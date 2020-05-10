@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <form id='form' >
+      <select name='movie' id='movie'>
+          <option selected>Forrest Gump</option>
+          <option>Shawshank Redemption</option>
+          <option>Pulp Fiction</option>
+          <option>The Silence of the Lambs</option>
+          <option>The Matrix</option>
+          <option>Star Wars IV: A New Hope</option>
+          <option>Jurassic Park</option>
+          <option>Braveheart</option>
+          <option>Terminator 2: Judgement Day</option>
+          <option>Schindler's List</option>
+      </select>
+
+      <select name='rating' id='rating'>
+          <option selected>5</option>
+          <option>4</option>
+          <option>3</option>
+          <option>2</option>
+          <option>1</option>
+      </select>
+    </form>
+    <br>
+    <button onClick="sendMsg()">Submit Rating</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    
+    <script>
+      const socket = io("http://localhost:8080");
+
+      function sendMsg() {
+        socket.emit("message", "HELLO WORLD");
+      }
+    </script>
+
+  </body>
+</html>

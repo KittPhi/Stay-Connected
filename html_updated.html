@@ -8,11 +8,12 @@
   </head>
 
   <body>
-    <form id='myForm' enctype='application/json'>
+
+    <form id='myForm'>
       <p>Of these movies, which is your favorite?</p>
-      <select name='movie' id='movie'>
+      <select name='movie'>
           <!-- <option value='none'>None</option> -->
-          <option value='Forrest Gump' selected >Forrest Gump</option>
+          <option value='Forrest Gump' selected>Forrest Gump</option>
           <option value='Shawshank Redemption'>Shawshank Redemption</option>
           <option value='Pulp Fiction'>Pulp Fiction</option>
           <option value='The Silence of the Lambs'>The Silence of the Lambs</option>
@@ -23,7 +24,8 @@
           <option value='Terminator 2: Judgement Day'>Terminator 2: Judgement Day</option>
           <option value="Schindler's List">Schindler's List</option>
       </select>
-      <select name='rating' id='rating'>
+
+      <select name='rating'>
           <!-- <option value='none'>None</option> -->
           <option value='5' selected>5</option>
           <option value='4'>4</option>
@@ -36,23 +38,22 @@
     <h3>Result:</h3>
       <iframe name="result" style="height:100px;width:200px;"></iframe>  
     <br>
-    <button onClick="sendMsg()">Submit Rating</button>
-
+    <!-- <button onClick="sendMsg()">Submit Rating</button> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     
     <script>
       const socket = io("http://localhost:8080");
 
       function sendMsg() {
-        var movie = document.getElementById('movie')
-        var rating = document.getElementById('rating')
-        var data = {'movie': movie.value, 'rating': rating.value}
-        socket.emit("message", data);
+        var formData = JSON.stringify($("#myForm").serializeArray());
+        
+        socket.emit("message", formData); }
 
-        // socket.on('return', data) 
-        //   console.log(data)
-    
-      }
+      // event listener (server -> client)
+      // socket.on("message", function(data) {
+      //   console.log(data);
+      // });
+
     </script>
 
   </body>

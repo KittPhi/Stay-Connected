@@ -1,23 +1,34 @@
 from aiohttp import web
 import socketio
+import main
 
 sio = socketio.AsyncServer()
-
 app = web.Application()
-
 sio.attach(app)
 
-async def index(request):
+# return index.html (endpoint)
+async def index_handler(request):
     with open('index.html') as f:
         return web.Response(text=f.read(), content_type='text/html')
 
+# event listener (client -> server)
 @sio.on('message')
-async def print_message(sid, message):
 
-    print("Socket ID: " , sid)
-    print(message)
+async def message_handler(socket_id, data):
 
-app.router.add_get('/', index)
+    print("Socket ID: " , socket_id)
+    print(data)
 
+    # pass html data to python script
+    main.main(data)
+
+# @sio.on('result')
+# async def result_handler(data):
+#     sio.emit('result', data)
+
+# bind endpoint
+app.router.add_get('/', index_handler)
+
+# starts the server
 if __name__ == '__main__':
     web.run_app(app)
