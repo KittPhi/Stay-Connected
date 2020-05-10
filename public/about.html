@@ -147,23 +147,14 @@
             <option>2</option>
             <option>1</option>
         </select>
-
       </form>
       <br>
-        <button onclick='handleFormSubmit("red");'>Red</button>
-        <button onclick='handleFormSubmit("blue");'>Blue</button>
+      <button onclick='submitRating();'>submit rating</button>
+      <p id='result'></p>
       <br>
-
-      <p id='result'> result goes here </p>
-
-      <a href="#" onclick="new DivObject()">Spawn</a>
-
-      <script>
-        DivObject = function() {
-            this.div = document.createElement( "div" ) ;
-            document.body.appendChild( this.div ) ;
-        }
-      </script>
+      <br> <button onclick='changeColor("red");'>RED</button> <br>
+      <br>
+      <p id='color'>changeColor () in json.js</p>
 
 <script src="json.js"></script>
 </script>

@@ -1,28 +1,40 @@
+// $('#rating').serializeJSON();
+// // convert to String
+// var jsonString = JSON.stringify(obj);
 
-// const form = document.getElementByClassName('.rating-form')[0];
-// form.addEventListener('submit', handleFormSubmit);
+const { spawn } = require('child_process');
 
-// const handleFormSubmit = event => {/* omitted for brevity */};
-
-// The serializeJSON function returns a JavaScript object, not a JSON String
-var obj = $('#rating').serializeJSON();
-
-console.log(obj);
-
-// To convert into a JSON String, use the JSON.stringify method
-var jsonString = JSON.stringify(obj);
-
-console.log(jsonString);
-
-function handleFormSubmit(newColor) {
-    var result = document.getElementById('result')
+function changeColor(newColor) {
+    var result = document.getElementById('color')    
     result.style.color = newColor;
-
 };
 
-var form = document.getElementById('form');
+const temp = [];
+function submitRating() {
 
-form.addEventListener('submit', handleFormSubmit);
+    var result = document.getElementById('result')    
+    result.after('the similar movie is!');
+    console.log('here')
 
+    const python = spawn('python', ['main.py']);  // python hello.py
+    
+    python.stdout.on('data', (data) => {    // python script outputs to console, then buffer outputs data into readable string
+        console.log('Pipe data from python');
+        dataToSend = data.toString();
+
+        temp.push(parseFloat(data));
+        console.log(temp);
+    });
+
+    python.on('close', (code) => {  // 'close' is emitted when stdio child_process has been closed
+        console.log(`close python process ${code}`);
+        response.send(dataToSend);
+    });
+}
+
+
+// var form = document.getElementById('form');
+// form.addEventListener('submit', handleFormSubmit);
+// const handleFormSubmit = event => { };
 
 

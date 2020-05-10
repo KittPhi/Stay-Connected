@@ -5,16 +5,14 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const port = 3000;
 var bodyParser = require('body-parser');
+const submitRating = require('./public/json.js')
 
-// app.get('/', (request, response) => response.send('Hello World!'));
 // allows http://localhost:3000/hello.html in public folder
 app.use(express.static("public"));
 
 // url and json body parsing middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-// app.get('/', (request, response) => response.send('Hello World!'));
 
 // express app with one get router
 app.get('/', (request, response) => {
@@ -35,7 +33,6 @@ app.get('/', (request, response) => {
         console.log(`close python process ${code}`);
         response.send(dataToSend);
     });
-
 });
 
 io.on('connection', (socket) => {
@@ -50,6 +47,11 @@ io.on('connection', (socket) => {
         socket.emit('connect', 'Hello Client');
     })
  
+    socket.on('message', (data) => {
+        console.log('message')
+        console.log(data);
+    })
+
  });
  
 server.listen(port, () => {
@@ -68,4 +70,3 @@ app.post('/car', (request, response) => {
     console.log(request.body.color);
     response.send("Success!");
 })
-// app.listen(port, () => console.log(`App listening on port ${port}!`));

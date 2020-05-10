@@ -1,3 +1,8 @@
+I've tried:
+pip install python-socketio
+- didn't work when trying to run python script from server.py
+
+
 install node.js from https://nodejs.org/en/download/
 edit path Environment-Variables > User-Variables > PATH C:\Program Files\nodejs 
 restart vsCode
