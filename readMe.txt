@@ -62,4 +62,7 @@ error on import django in urls.py
 FIX: You need Django version 2
     pip install --upgrade django
     pip3 install --upgrade django
-
+===================================================
+Presentation:
+node index.js
+python manage.py runserver 127.0.0.1:8002
