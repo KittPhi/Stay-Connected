@@ -24,7 +24,7 @@ app.get('/', (request, response) => {
     var dataToSend;
 
     // spawn new child_process
-    const python = spawn('python', ['hello.py']);  // python hello.py
+    const python = spawn('python', ['main.py']);  // python hello.py
 
     python.stdout.on('data', (data) => {    // python script outputs to console, then buffer outputs data into readable string
         console.log('Pipe data from python');

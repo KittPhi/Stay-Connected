@@ -5,7 +5,7 @@
 // const handleFormSubmit = event => {/* omitted for brevity */};
 
 // The serializeJSON function returns a JavaScript object, not a JSON String
-let obj = $('#rating').serializeJSON();
+var obj = $('#rating').serializeJSON();
 
 console.log(obj);
 
@@ -13,5 +13,16 @@ console.log(obj);
 var jsonString = JSON.stringify(obj);
 
 console.log(jsonString);
+
+function handleFormSubmit(newColor) {
+    var result = document.getElementById('result')
+    result.style.color = newColor;
+
+};
+
+var form = document.getElementById('form');
+
+form.addEventListener('submit', handleFormSubmit);
+
 
 

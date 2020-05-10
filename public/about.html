@@ -125,8 +125,9 @@
       </div>
 
 
-      <form id='rating' >
-        <select name='movie'>
+      <form id='form' >
+
+        <select name='movie' id='movie'>
             <option selected>Forrest Gump</option>
             <option>Shawshank Redemption</option>
             <option>Pulp Fiction</option>
@@ -137,23 +138,34 @@
             <option>Braveheart</option>
             <option>Terminator 2: Judgement Day</option>
             <option>Schindler's List</option>
-            </select>
+        </select>
 
-        <select name='rating'>
+        <select name='rating' id='rating'>
             <option selected>5</option>
             <option>4</option>
             <option>3</option>
             <option>2</option>
             <option>1</option>
         </select>
+
       </form>
       <br>
-      <button onclick="submitRating()">Submit Rating</button>
-      <p id="result"></p>
+        <button onclick='handleFormSubmit("red");'>Red</button>
+        <button onclick='handleFormSubmit("blue");'>Blue</button>
       <br>
 
+      <p id='result'> result goes here </p>
 
-<script src="about.js"></script>
+      <a href="#" onclick="new DivObject()">Spawn</a>
+
+      <script>
+        DivObject = function() {
+            this.div = document.createElement( "div" ) ;
+            document.body.appendChild( this.div ) ;
+        }
+      </script>
+
+<script src="json.js"></script>
 </script>
 
 
