@@ -1,9 +1,9 @@
-def main(data):
+async def main(data):
     print('inside python', data)
     print(data['movie'])
     print(data['rating'])
     film = data['movie']
-    rate = data['rating']
+    # rate = data['rating']
     import app
     import pandas as pd 
     df = pd.read_csv('ratings.csv')
@@ -16,55 +16,46 @@ def main(data):
 
     # find the movies that have the most ratings by setting ascending to False, then view top 10
     mostRated = ratings.sort_values('total_ratings', ascending=False).head(10)
-    print(mostRated)
+    # print(mostRated)
     # New Dataframes showing the userIds' and ratings that were given for both movies.
-    Forrest_Gump_rating = matrix['Forrest Gump (1994)']
-    Pulp_Fiction_rating = matrix['Pulp Fiction (1994)']
-    Jurrassic_Park_rating = matrix['Jurassic Park (1993)']
-    Braveheart_rating = matrix['Braveheart (1995)']
-    Schindlers_List_rating = matrix["Schindler's List (1993)"] 
+    movie_rating = matrix[film]
 
-    like_Forrest_Gump = matrix.corrwith(Forrest_Gump_rating)
-
-    like_Pulp_Fiction = matrix.corrwith(Pulp_Fiction_rating)
+    like_movie = matrix.corrwith(movie_rating)
 
     # at the top of the list, which shows us that it is the most recommended movie.
-    correlation_Forrest_Gump = like_Forrest_Gump.sort_values(ascending=False)
+    correlation_to_movie = like_movie.sort_values(ascending=False)
 
     # Coffee Town (2013) is the most recommended movies
-    correlation_Pulp_Fiction = like_Pulp_Fiction.sort_values(ascending=False)
+    # correlation_Pulp_Fiction = like_Pulp_Fiction.sort_values(ascending=False)
+    # topFive_Forrest = like_movie.sort_values(ascending=False).head(5)
+    corr_movie = pd.DataFrame(correlation_to_movie, columns=['Correlation'])
+    corr_movie.dropna(inplace=True)
 
+    corr_movie = corr_movie.join(ratings['total_ratings'])
 
-    topFive_Forrest = like_Forrest_Gump.sort_values(ascending=False).head(5)
-
-    top_Forrest = like_Forrest_Gump.sort_values(ascending=False).head(1)
-
-    topFive_Pulp_Fiction = like_Pulp_Fiction.sort_values(ascending=False).head(5)
-
-    top_Pulp = like_Pulp_Fiction.sort_values(ascending=False).head(1)
-
-    corr_Forrest = pd.DataFrame(correlation_Forrest_Gump, columns=['Correlation'])
-    corr_Forrest.dropna(inplace=True)
-
-    corr_pulp = pd.DataFrame(correlation_Pulp_Fiction, columns=['Correlation'])
-    corr_pulp.dropna(inplace=True)
-
-    corr_Forrest = corr_Forrest.join(ratings['total_ratings'])
-    corr_pulp = corr_pulp.join(ratings['total_ratings'])
-
-    top3_Forrest = corr_Forrest[corr_Forrest['total_ratings'] > 100].sort_values(by='Correlation', 
+    top3_Similar = corr_movie[corr_movie['total_ratings'] > 100].sort_values(by='Correlation', 
                                                                 ascending=False).head(4)
 
-    top3_Pulp = corr_pulp[corr_pulp['total_ratings'] > 100].sort_values(by='Correlation', 
-                                                            ascending=False).head(4)
+    top3_Similar = top3_Similar.drop([film])
+    print('Similar to the Movie: ', film)
+    print(top3_Similar)
 
-    top3_Forrest = top3_Forrest.drop(['Forrest Gump (1994)'])
-    print('Similar to Forrest Gump: ')
-    print(top3_Forrest)
-
-    top3_Pulp = top3_Pulp.drop(['Pulp Fiction (1994)'])
-    print('Similar to Pulp Fiction: ')
-    print(top3_Pulp)
-
+    # top_Similar = corr_movie[corr_movie['total_ratings'] > 100].sort_values(by='Correlation', 
+    #                                                             ascending=False).head(2)
+    # top_Similar = top_Similar.drop([film])
+    # print('Similar to the Movie: ', film)
+    # print(top_Similar)
     
 
+    # first = top3_Similar.columns.values[0] # Correlation
+    
+    # first = top3_Similar.iloc[0]
+    # print(first)
+    # app.toClient(first)
+    
+    # second = top3_Similar.iloc[1]
+    # print(second, ' third movie')
+
+    # third = top3_Similar.iloc[-1]
+    # print(third, ' first movie')
+    # return first

@@ -20,7 +20,14 @@ async def message_handler(socket_id, data):
     print(data)
 
     # pass html data to python script
-    main.main(data)
+    first = await main.main(data)
+    first = first.to_json()
+    await sio.emit('result', first)
+
+@sio.on('result')
+def toClient(first):
+    print(first, ' made it to server')
+            
 
 # @sio.on('result')
 # async def result_handler(data):
