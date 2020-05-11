@@ -8,7 +8,7 @@ sio.attach(app)
 
 # return index.html (endpoint)
 async def index_handler(request):
-    with open('index.html') as f:
+    with open('app.html') as f:
         return web.Response(text=f.read(), content_type='text/html')
 
 # event listener (client -> server)
@@ -27,6 +27,7 @@ async def message_handler(socket_id, data):
 #     sio.emit('result', data)
 
 # bind endpoint
+app.router.add_static('/static', 'static')
 app.router.add_get('/', index_handler)
 
 # starts the server

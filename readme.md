@@ -1,6 +1,6 @@
 
 pip install python-socketio         = Async Socket IO Server
-pip install aiohttp                 = Web Application
+pip install aiohttp                 = Web Application; companion web framework
 
 
 References:
